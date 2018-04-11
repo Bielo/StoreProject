@@ -30,7 +30,7 @@ public class InMemoryProductRepository implements ProductRepository {
         tablet_Nexus.setCategory("Tablet");
         tablet_Nexus.setManufacturer("Google");
         tablet_Nexus.setUnitsInStock(1000);
-
+        
         listOfProducts.add(iphone);
         listOfProducts.add(laptop_dell);
         listOfProducts.add(tablet_Nexus);
@@ -67,6 +67,29 @@ public class InMemoryProductRepository implements ProductRepository {
     }
 
     @Override
+    public List<Product> getProductsByManufacturer(String manufacturer) {
+        List<Product> productsByManufacturer = new ArrayList<>();
+        for (Product product : listOfProducts) {
+            if (manufacturer.equalsIgnoreCase(product.getManufacturer())) {
+                productsByManufacturer.add(product);
+            }
+        }
+        return productsByManufacturer;
+    }
+
+    @Override
+    public List<Product> getProductsByManufacturer(String manufacturer, List<Product> listOfProductsFilterByCategory) {
+        List<Product> productsByManufacturer = new ArrayList<>();
+        for (Product product : listOfProductsFilterByCategory) {
+            if (manufacturer.equalsIgnoreCase(product.getManufacturer())) {
+                productsByManufacturer.add(product);
+            }
+        }
+        return productsByManufacturer;
+    }
+
+
+    @Override
     public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
         Set<Product> productsByBrand = new HashSet<>();
         Set<Product> productsByCategory = new HashSet<>();
@@ -87,5 +110,69 @@ public class InMemoryProductRepository implements ProductRepository {
         }
         productsByCategory.retainAll(productsByBrand);
         return productsByCategory;
+    }
+
+    @Override
+    public Set<Product> getProductsByPriceFilter(Map<String, List<String>> priceFilter) {
+
+        Set<String> parameters = priceFilter.keySet();
+
+        String lowerPrice = "0";
+        String hightestPrice = "0";
+
+        if (parameters.contains("low")) {
+            for (String lowPrice : priceFilter.get("low")) {
+                lowerPrice = lowPrice;
+            }
+        }
+
+        if (parameters.contains("hight")) {
+            for (String hightPrice : priceFilter.get("hight")) {
+                hightestPrice = hightPrice;
+            }
+        }
+
+        BigDecimal low = new BigDecimal(lowerPrice);
+        BigDecimal hight = new BigDecimal(hightestPrice);
+
+        Set<Product> productsFilterByPrice = new HashSet<>();
+        for (Product product : listOfProducts) {
+            if (product.getUnitPrice().compareTo(low) >= 0 && product.getUnitPrice().compareTo(hight) <= 0) {
+                productsFilterByPrice.add(product);
+            }
+        }
+        return productsFilterByPrice;
+    }
+
+    @Override
+    public Set<Product> getProductsByPriceFilter(Map<String, List<String>> priceFilter, List<Product> productsByCategoryAndManufacturer) {
+        Set<String> parameters = priceFilter.keySet();
+
+        Set<Product> productsFilter = new HashSet<>();
+
+        String lowerPrice = "0";
+        String hightestPrice = "0";
+
+        if (parameters.contains("low")) {
+            for (String lowPrice : priceFilter.get("low")) {
+                lowerPrice = lowPrice;
+            }
+        }
+
+        if (parameters.contains("hight")) {
+            for (String hightPrice : priceFilter.get("hight")) {
+                hightestPrice = hightPrice;
+            }
+        }
+
+        BigDecimal low = new BigDecimal(lowerPrice);
+        BigDecimal hight = new BigDecimal(hightestPrice);
+
+        for (Product product : productsByCategoryAndManufacturer) {
+            if (product.getUnitPrice().compareTo(low) >= 0 && product.getUnitPrice().compareTo(hight) <= 0) {
+                productsFilter.add(product);
+            }
+        }
+        return productsFilter;
     }
 }
