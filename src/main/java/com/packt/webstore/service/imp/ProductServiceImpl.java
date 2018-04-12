@@ -53,4 +53,9 @@ public class ProductServiceImpl implements ProductService {
         Set<Product> productsByPriceFilter = productRepository.getProductsByPriceFilter(paramFilters,productsByCategoryAndManufactuer);
         return productsByPriceFilter;
     }
+
+    @Override
+    public void addProduct(Product product) {
+        productRepository.addProduct(product);
+    }
 }

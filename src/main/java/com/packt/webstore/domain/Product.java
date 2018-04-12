@@ -12,7 +12,7 @@ public class Product {
     private long unitsInStock;
     private long unitsInOrder;
     private boolean discountinued;
-    private String condiditon;
+    private String condition;
 
     public Product() {
         super();
@@ -96,12 +96,12 @@ public class Product {
         this.discountinued = discountinued;
     }
 
-    public String getCondiditon() {
-        return condiditon;
+    public String getCondition() {
+        return condition;
     }
 
-    public void setCondiditon(String condiditon) {
-        this.condiditon = condiditon;
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class InMemoryProductRepository implements ProductRepository {
         tablet_Nexus.setCategory("Tablet");
         tablet_Nexus.setManufacturer("Google");
         tablet_Nexus.setUnitsInStock(1000);
-        
+
         listOfProducts.add(iphone);
         listOfProducts.add(laptop_dell);
         listOfProducts.add(tablet_Nexus);
@@ -174,5 +174,10 @@ public class InMemoryProductRepository implements ProductRepository {
             }
         }
         return productsFilter;
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        listOfProducts.add(product);
     }
 }
