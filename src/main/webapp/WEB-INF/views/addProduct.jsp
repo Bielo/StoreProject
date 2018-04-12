@@ -1,3 +1,4 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -22,7 +23,9 @@
         <fieldset>
             <legend>Dodaj nowy produkt</legend>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="productId">Id produktu</label>
+                <label class="control-label col-lg-2 col-lg-2" for="productId">
+                    <spring:message code="addProduct.form.productId.label" />
+                </label>
                 <div class="col-lg-10">
                     <form:input path="productId" id="productId" type="text" class="form:input-large"/>
                 </div>
@@ -58,21 +61,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="unitsInOrder">Ilość zamawianych sztuk</label>
-                <div class="col-lg-10">
-                    <form:input path="unitsInOrder" id="unitsInOrder" type="text" class="form:input-large"/>
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="control-label col-lg-2" for="description">Opis</label>
                 <div class="col-lg-10">
                     <form:textarea path="description" id="description" rows="2"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-lg-2" for="discontinued">Wycofany</label>
-                <div class="col-lg-10">
-                    <form:checkbox id="discontinued" path="discountinued"/>
                 </div>
             </div>
             <div class="form-group">
