@@ -102,7 +102,7 @@ public class ProductController {
     public void initialiseBinder(WebDataBinder binder) {
         binder.setDisallowedFields("unitsInOrder", "discountinued");
         binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category", "unitsInStock",
-                "productImage", "condition");
+                "productImage", "condition","language");
     }
 
     @ExceptionHandler(ProductNotFoundException.class)

@@ -13,6 +13,9 @@
 <section>
     <div class="jumbotron">
         <a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">Wyloguj się</a>
+        <div class="pull-right" style="padding-right: 50px">
+            <a href="?language=pl">polski</a>|<a href="?language=eng">angielski</a>
+        </div>
         <div class="container">
             <h1>Produkty</h1>
             <p>Dodaj produkty</p>
@@ -32,37 +35,49 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="name">Nazwa produktu</label>
+                <label class="control-label col-lg-2 col-lg-2" for="name">
+                <spring:message code="addProduct.form.name.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input path="name" id="name" type="text" class="form:input-large"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="unitPrice">Cena produktu</label>
+                <label class="control-label col-lg-2 col-lg-2" for="unitPrice">
+                    <spring:message code="addProduct.form.unitPrice.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input path="unitPrice" id="unitPrice" type="text" class="form:input-large"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="manufacturer">Producent</label>
+                <label class="control-label col-lg-2 col-lg-2" for="manufacturer">
+                    <spring:message code="addProduct.form.manufacturer.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input path="manufacturer" id="manufacturer" type="text" class="form:input-large"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="category">Kategoria</label>
+                <label class="control-label col-lg-2 col-lg-2" for="category">
+                    <spring:message code="addProduct.form.category.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input path="category" id="category" type="text" class="form:input-large"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Ilość dostępnych sztuk</label>
+                <label class="control-label col-lg-2 col-lg-2" for="unitsInStock">
+                    <spring:message code="addProduct.form.unitsInStock.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input path="unitsInStock" id="unitsInStock" type="text" class="form:input-large"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2" for="description">Opis</label>
+                <label class="control-label col-lg-2" for="description">
+                    <spring:message code="addProduct.form.description.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:textarea path="description" id="description" rows="2"/>
                 </div>

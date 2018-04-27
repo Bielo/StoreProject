@@ -10,6 +10,9 @@
 <body>
 <section>
     <div class="jumbotron">
+        <div class="pull-right" style="padding-right: 50px">
+            <a href="?language=pl">polski</a>|<a href="?language=eng">angielski</a>
+        </div>
         <div class="container">
             <h1>Produkty</h1>
             <p>Wszystkie produkty dostępne w naszym sklepie</p>
