@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-    <mvc:annotation-driven enable-matrix-variables="true"/>
+    <mvc:annotation-driven enable-matrix-variables="true" validator="validator"/>
     <context:component-scan base-package="com.packt.webstore"/>
     <mvc:resources mapping="/resource/**/" location="/resources/"/>
     <mvc:interceptors>
@@ -72,5 +72,19 @@
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
         <property name="defaultLocale" value="pl"/>
     </bean>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <bean id="productValidator" class="com.packt.webstore.validator.ProductValidator">
+        <property name="springValidators">
+            <set>
+                <ref bean="unitsInStockValidator"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="unitsInStockValidator" class="com.packt.webstore.validator.UnitsInStockValidator"/>
 
 </beans>
